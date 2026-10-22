@@ -1,42 +1,52 @@
-# Shimul AES GitHub Runner (Termux)
+🔐 Shimul Decoder — AES Protected Python Runner
 
-## 1) Install dependency
-```bash
+A password-protected Python script runner for Android Termux. It downloads an encrypted script from GitHub, decrypts it with AES-256-GCM, and runs it.
+
+✨ Features
+
+- 🔐 AES-256-GCM authenticated encryption
+- 🔑 Password-based key derivation using scrypt
+- 📱 Designed for Android Termux
+- 🌐 Downloads encrypted scripts from GitHub
+- ▶️ Simple one-command launch
+- 🧹 Removes the temporary decrypted Python file after execution
+
+📦 Requirements
+
+- Android with Termux
+- Python 3
+- Internet connection
+- AES password used during encryption
+
+🚀 Installation
+
+Install the required packages:
+
+pkg update
 pkg install python curl -y
 python -m pip install pycryptodome
-```
 
-## 2) Encrypt your original script
-Keep `protect.py` next to your original `shimul.py`:
-```bash
-python protect.py encrypt shimul.py shimul.enc
-```
-Use a strong password and keep it safe. Do not commit `shimul.py` to a public repository.
 
-## 3) Upload to GitHub
-Upload only:
-- `shimul.enc`
-- `run.sh`
+⚡ One-Command Launch
 
-`protect.py` is only needed to create/update the encrypted file; do not put your plaintext script in a public repo.
+Run this command in Termux:
 
-## 4) Configure run.sh
-Edit `run.sh` and replace:
-- `YOUR_GITHUB_USERNAME`
-- `YOUR_REPOSITORY`
+pkg install python curl -y && python -m pip install pycryptodome && curl -fLsS https://raw.githubusercontent.com/Hackershimul07/decode/main/run.sh -o run.sh && bash run.sh
 
-Ensure the branch name matches (`main` by default).
+The runner will download the encrypted file, ask for your AES password, decrypt it temporarily, and run the Python script.
 
-## 5) One-command runner
-After uploading `run.sh`, run this in Termux (replace placeholders):
-```bash
-curl -fLsS https://raw.githubusercontent.com/YOUR_GITHUB_USERNAME/YOUR_REPOSITORY/main/run.sh -o run.sh && bash run.sh
-```
+🛡️ Security Notes
 
-It downloads `shimul.enc`, asks for the AES password, decrypts it to a temporary path, runs it, and deletes the temporary `.py` afterward.
+- Never publish your AES password.
+- AES encryption protects the stored file, but the script is decrypted while running.
+- A determined user may recover the decrypted code from the device.
+- Do not hard-code passwords or secret keys into public scripts.
+- Use this tool only with scripts and APIs you are authorized to access.
 
-## Security notes
-- The decrypted Python code exists on the device while running and can be recovered by a determined user.
-- Keep the password separate from the repository. Do not hard-code it into `run.sh`.
-- Anyone who has the encrypted file and password can decrypt it.
-- Use only with scripts and APIs you are authorized to use.
+👨‍💻 Repository
+
+GitHub: https://github.com/Hackershimul07/decode
+
+---
+
+Made for Termux by Hackershimul07
