@@ -3,7 +3,7 @@ set -eu
 
 # Replace these values with your GitHub username and repository.
 GITHUB_USER="Hackershimul07"
-GITHUB_REPO="https://github.com/Hackershimul07/decode"
+GITHUB_REPO="decode"
 BRANCH="main"
 ENC_FILE="shimul.enc"
 
