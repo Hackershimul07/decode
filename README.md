@@ -1,4 +1,4 @@
-🔐 Shimul Decoder — AES Protected Python Runner
+🔐 Shimul Decode — AES Protected Python Runner
 
 A password-protected Python script runner for Android Termux. It downloads an encrypted script from GitHub, decrypts it with AES-256-GCM, and runs it.
 
@@ -25,7 +25,6 @@ Install the required packages:
 pkg update
 pkg install python curl -y
 python -m pip install pycryptodome
-
 
 ⚡ One-Command Launch
 
